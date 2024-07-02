@@ -1,0 +1,12 @@
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\root\msg\400.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\root\msg\404.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\root\msg\405.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\root\msg\500.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\root\web\index.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\root\web\script.js
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\root\web\style.css
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\HTTPServer.exe
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\HTTPServer.dll
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\HTTPServer.deps.json
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\HTTPServer.runtimeconfig.json
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\publish\HTTPServer.pdb

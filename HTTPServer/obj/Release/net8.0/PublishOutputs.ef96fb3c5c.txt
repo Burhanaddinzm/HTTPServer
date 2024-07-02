@@ -1,0 +1,9 @@
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\root\msg\400.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\root\msg\404.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\root\msg\405.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\root\msg\500.html
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\HTTPServer.exe
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\HTTPServer.dll
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\HTTPServer.deps.json
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\HTTPServer.runtimeconfig.json
+C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\publish\HTTPServer.pdb

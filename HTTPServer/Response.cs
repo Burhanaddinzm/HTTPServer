@@ -1,6 +1,4 @@
-﻿using System.Net.Sockets;
-
-namespace HTTPServer;
+﻿namespace HTTPServer;
 
 public class Response
 {
@@ -105,6 +103,54 @@ public class Response
                 return "image/jpeg";
             case ".gif":
                 return "image/gif";
+            case ".svg":
+                return "image/svg+xml";
+            case ".pdf":
+                return "application/pdf";
+            case ".xml":
+                return "application/xml";
+            case ".json":
+                return "application/json";
+            case ".mp4":
+                return "video/mp4";
+            case ".mp3":
+                return "audio/mpeg";
+            case ".zip":
+                return "application/zip";
+            case ".txt":
+                return "text/plain";
+            case ".csv":
+                return "text/csv";
+            case ".doc":
+            case ".docx":
+                return "application/msword";
+            case ".xls":
+            case ".xlsx":
+                return "application/vnd.ms-excel";
+            case ".ppt":
+            case ".pptx":
+                return "application/vnd.ms-powerpoint";
+            case ".odt":
+                return "application/vnd.oasis.opendocument.text";
+            case ".ods":
+                return "application/vnd.oasis.opendocument.spreadsheet";
+            case ".odp":
+                return "application/vnd.oasis.opendocument.presentation";
+            case ".wav":
+                return "audio/wav";
+            case ".ogg":
+                return "audio/ogg";
+            case ".mpg":
+            case ".mpeg":
+                return "video/mpeg";
+            case ".avi":
+                return "video/x-msvideo";
+            case ".tar":
+                return "application/x-tar";
+            case ".gz":
+                return "application/gzip";
+            case ".7z":
+                return "application/x-7z-compressed";
             default:
                 return "application/octet-stream";
         }
