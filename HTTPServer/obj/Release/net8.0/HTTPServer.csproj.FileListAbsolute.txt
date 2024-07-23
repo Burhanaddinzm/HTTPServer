@@ -17,6 +17,3 @@ C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\obj\Release\net8.0\refin
 C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\obj\Release\net8.0\HTTPServer.pdb
 C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\obj\Release\net8.0\HTTPServer.genruntimeconfig.cache
 C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\obj\Release\net8.0\ref\HTTPServer.dll
-C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\root\web\index.html
-C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\root\web\script.js
-C:\Users\Burhanaddin\source\repos\HTTPServer\HTTPServer\bin\Release\net8.0\root\web\style.css

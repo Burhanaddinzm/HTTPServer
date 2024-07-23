@@ -10,7 +10,7 @@ public class Request
     public Request(string type, string url, string host, string referer)
     {
         Type = type;
-        URL = url;
+        URL = url.Replace("%20", " ");
         Host = host;
         Referer = referer;
     }
