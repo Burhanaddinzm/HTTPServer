@@ -10,26 +10,23 @@ public class HTTPServer
     public const string MSG_DIR = "/root/msg/";
     public const string WEB_DIR = "/root/web";
     public const string VERSION = "HTTP/1.1";
-    public const string NAME = "Test HTTP Server v0.1";
+    public const string NAME = "Test HTTP Server v0.2";
 
-    private int _port;
     private bool _running = false;
 
     private TcpListener _listener;
 
     public HTTPServer(int port)
     {
-        _port = port;
-        _listener = new TcpListener(IPAddress.Any, _port);
+        _listener = new TcpListener(IPAddress.Any, port);
     }
 
-    public void Start()
+    public async Task Start()
     {
-        Thread serverThread = new Thread(new ThreadStart(Run));
-        serverThread.Start();
+        await Task.Run(() => RunAsync());
     }
 
-    private void Run()
+    private async Task RunAsync()
     {
         _running = true;
         _listener.Start();
@@ -38,12 +35,13 @@ public class HTTPServer
         {
             Console.WriteLine("Waiting for connection...");
 
-            TcpClient client = _listener.AcceptTcpClient();
+            TcpClient client = await _listener.AcceptTcpClientAsync();
+            client.ReceiveTimeout = 1000;
+            client.SendTimeout = 1000;
 
             Console.WriteLine("Client connected");
 
-            HandleClient(client);
-
+            await HandleClientAsync(client);
             client.Close();
         }
 
@@ -52,7 +50,7 @@ public class HTTPServer
         _listener.Stop();
     }
 
-    private void HandleClient(TcpClient client)
+    private async Task HandleClientAsync(TcpClient client)
     {
         StreamReader reader = new StreamReader(client.GetStream(), Encoding.UTF8);
         StreamWriter writer = new StreamWriter(client.GetStream(), Encoding.UTF8) { AutoFlush = true };
@@ -60,33 +58,56 @@ public class HTTPServer
         try
         {
             StringBuilder requestBuilder = new StringBuilder();
-            string line;
+            string? line;
 
-            while ((line = reader.ReadLine()) != null && line != "")
+            while (true)
             {
+                line = await ReadLineWithTimeoutAsync(reader, TimeSpan.FromSeconds(1));
+                if (line == null) break;
+                if (line == "") break;
+                if (line == string.Empty) break;
                 requestBuilder.Append(line + "\n");
             }
+            //while ((line = reader.ReadLine()) != null && line != "" && line != string.Empty)
+            //{
+            //    requestBuilder.Append(line + "\n");
+            //}
 
             string requestMsg = requestBuilder.ToString();
             Debug.WriteLine("Request: \n" + requestMsg);
 
-            Request req = Request.GetRequest(requestMsg);
+            Request? req = Request.GetRequest(requestMsg);
 
             Response resp = Response.From(req);
 
-            resp.Post(writer);
+            await resp.PostAsync(writer);
         }
         catch (Exception ex)
         {
             Debug.WriteLine("Error handling client: " + ex.Message);
 
             Response errorResponse = Response.MakeInternalServerError();
-            errorResponse.Post(writer);
+            await errorResponse.PostAsync(writer);
         }
         finally
         {
             reader.Close();
             writer.Close();
         }
+    }
+
+    private async Task<string?> ReadLineWithTimeoutAsync(StreamReader reader, TimeSpan timeout)
+    {
+        var readTask = reader.ReadLineAsync();
+        var delayTask = Task.Delay(timeout);
+
+        var completedTask = await Task.WhenAny(readTask, delayTask);
+
+        if (completedTask == delayTask)
+        {
+            return null;
+        }
+
+        return await readTask;
     }
 }

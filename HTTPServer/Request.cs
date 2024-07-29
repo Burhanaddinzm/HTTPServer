@@ -10,12 +10,12 @@ public class Request
     public Request(string type, string url, string host, string referer)
     {
         Type = type;
-        URL = url.Replace("%20", " ");
+        URL = url;
         Host = host;
         Referer = referer;
     }
 
-    public static Request GetRequest(string request)
+    public static Request? GetRequest(string request)
     {
         if (string.IsNullOrEmpty(request)) return null;
 
@@ -25,7 +25,7 @@ public class Request
         if (requestLine.Length < 3) return null;
 
         string type = requestLine[0];
-        string url = requestLine[1];
+        string url = requestLine[1].Replace("%20", " ");
         string host = string.Empty;
         string referer = string.Empty;
 

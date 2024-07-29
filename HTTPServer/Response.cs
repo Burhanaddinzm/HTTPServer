@@ -2,7 +2,7 @@
 
 public class Response
 {
-    private byte[] data = null;
+    private byte[]? data = null;
     private string status;
     private string mime;
 
@@ -13,7 +13,7 @@ public class Response
         this.mime = mime;
     }
 
-    public static Response From(Request request)
+    public static Response From(Request? request)
     {
         try
         {
@@ -190,17 +190,17 @@ public class Response
         }
     }
 
-    public void Post(StreamWriter writer)
+    public async Task PostAsync(StreamWriter writer)
     {
-        writer.WriteLine($"{HTTPServer.VERSION} {status}");
-        writer.WriteLine($"Server: {HTTPServer.NAME}");
-        writer.WriteLine($"Content-Type: {mime}");
-        writer.WriteLine($"Content-Length: {data.Length}");
-        writer.WriteLine("Connection: close");
-        writer.WriteLine();
-        writer.Flush();
+        await writer.WriteLineAsync($"{HTTPServer.VERSION} {status}");
+        await writer.WriteLineAsync($"Server: {HTTPServer.NAME}");
+        await writer.WriteLineAsync($"Content-Type: {mime}");
+        await writer.WriteLineAsync($"Content-Length: {data.Length}");
+        await writer.WriteLineAsync("Connection: close");
+        await writer.WriteLineAsync();
+        await writer.FlushAsync();
 
-        writer.BaseStream.Write(data, 0, data.Length);
-        writer.BaseStream.Flush();
+        await writer.BaseStream.WriteAsync(data, 0, data.Length);
+        await writer.BaseStream.FlushAsync();
     }
 }
