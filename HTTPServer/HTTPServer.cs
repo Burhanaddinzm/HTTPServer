@@ -10,15 +10,15 @@ public class HTTPServer
     public const string MSG_DIR = "/root/msg/";
     public const string WEB_DIR = "/root/web";
     public const string VERSION = "HTTP/1.1";
-    public const string NAME = "Test HTTP Server v0.2";
+    public const string NAME = "Test HTTP Server v0.25";
 
     private bool _running = false;
 
     private TcpListener _listener;
 
-    public HTTPServer(int port)
+    public HTTPServer(IPAddress ipAddress, int port)
     {
-        _listener = new TcpListener(IPAddress.Any, port);
+        _listener = new TcpListener(ipAddress, port);
     }
 
     public async Task Start()
